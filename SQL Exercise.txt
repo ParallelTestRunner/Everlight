@@ -1,0 +1,29 @@
+Answers to SQL Excercise (https://www.dropbox.com/s/ttkoetf18bzix54/Quality%20Engineer%20project%20and%20test.zip?dl=0&file_subpath=%2FSQL+Exercise.docx)
+
+
+SELECT * FROM tblCaseEvents ce
+INNER JOIN tblCase c ON ce.CaseRef = c.CaseRef
+WHERE c.CaseNo = '12446'
+-------------------------------------------------
+
+
+SELECT * FROM tblCase c
+INNER JOIN tblCaseEvents ce ON c.CaseRef = ce.CaseRef
+WHERE ce.StartDate >= '2013/01/01'
+-------------------------------------------------
+
+
+INSERT INTO tblCaseType (CaseTypeRef, Name, Abbreviation, Usage, Obsolete)
+VALUES ('A-Valid-Case-Type', 'A-Valid-Name', 'AVN', 'Valid-Usage', false)
+-------------------------------------------------
+
+
+UPDATE CaseRef
+SET CaseTypeRef = 'A-Valid-Case-Type'
+WHERE CaseNo = '12446'
+-------------------------------------------------
+
+
+SELECT TOP 10 c.CaseRef, c.CaseTypeRef, c.CaseNo, ctr.Name FROM CaseRef ce
+INNER JOIN CaseTypeRef ctr ON c.CaseTypeRef = ctr.CaseTypeRef
+ORDER BY ActiveDate DESC
